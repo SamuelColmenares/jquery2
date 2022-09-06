@@ -8,10 +8,21 @@ $(document).ready(function() {
                     //console.log('data :>> ', res);
                     let contenido = res.data;
                     console.log('contenido :>> ', contenido);
-                    for ()
-                        contenido.forEach()
-                    $.forEach()
-                    for (key in contenido)
+
+                    contenido.forEach(usr => {
+                        console.log('%cforeach email :>> ', 'background:purple;color:white', usr.email);
+                    });
+
+                    $.each(contenido, function(i, val) {
+                        console.log('%cforeach jQuery email ' + i + ' :>> ', 'background:green;color:white', val.email);
+                    });
+
+                    for (const usr in contenido) {
+                        if (Object.hasOwnProperty.call(contenido, usr)) {
+                            const element = contenido[usr];
+                            console.log('%cfor in email :>> ', 'background:blue;color:white', element.email);
+                        }
+                    }
                 },
                 error: function(err) {
                     console.log('err :>> ', err);

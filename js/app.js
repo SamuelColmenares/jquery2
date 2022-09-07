@@ -48,4 +48,41 @@ $(document).ready(function() {
                 console.log('Finaliza ejecucion del ajax');
             });
     });
+
+    $('#crear').click(crearUsuario);
 });
+
+
+function crearUsuario() {
+    const nombre = $('#input-nombre').val();
+    const trabajo = $('#input-trabajo').val();
+
+    if (nombre && trabajo) {
+        const data = {
+                name: nombre,
+                job: trabajo
+            },
+            headers = {
+                test: 'prueba envio post'
+            };
+
+        $.ajax({
+                url: 'https://reqres.in/api/users',
+                method: 'POST',
+                data: data,
+                contentType: 'application/json',
+                crossOrigin: true,
+                success: function(res) {
+                    console.log('res :>> ', res);
+                },
+                error: function(err) {
+                    console.warn('err :>> ', err);
+                }
+            })
+            .done(function() {
+                console.log('Finaliza ejecucion del ajax');
+            });
+    } else {
+        console.log('Datos incompletos<!!');
+    }
+}
